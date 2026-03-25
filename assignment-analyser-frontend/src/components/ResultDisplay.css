@@ -1,0 +1,670 @@
+/* =====================================================
+   ResultDisplay.css — Briefly
+   Styles for the tabbed analysis results panel.
+   Uses CSS variables from App.css for theme support.
+   ===================================================== */
+
+/* ── Results wrapper ─────────────────────────────────── */
+
+.results-wrapper {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+/* ── Results header ──────────────────────────────────── */
+
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.results-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.results-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+}
+
+/* Badge showing the assessment type (Essay, Report, etc.) */
+.assessment-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-dim);
+  border: 1px solid rgba(31, 157, 85, 0.25);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.results-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Export PDF button */
+.btn-export {
+  background-color: var(--accent);
+  border: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-export:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.btn-export:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* New Analysis button */
+.btn-new-analysis {
+  background: none;
+  border: 1px solid var(--border-input);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-new-analysis:hover {
+  border-color: var(--text-faint);
+  color: var(--text-heading);
+}
+
+.export-error {
+  color: var(--error);
+  font-size: 13px;
+  padding: 10px 28px 0;
+  margin: 0;
+}
+
+/* ── Spinner override (used inside the export button) ── */
+
+.spinner-dark {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+/* ── Tab strip ───────────────────────────────────────── */
+
+/* Horizontally scrollable tab bar — no visible scrollbar */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 13px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.tab-button:hover {
+  color: var(--text-secondary);
+}
+
+/* Active tab gets the green underline */
+.tab-button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Tab content ─────────────────────────────────────── */
+
+.tab-content {
+  padding: 28px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+}
+
+.section-intro {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 20px;
+  line-height: 1.55;
+}
+
+/* ── Overview tab ────────────────────────────────────── */
+
+.overview-block {
+  margin-bottom: 28px;
+}
+
+.overview-block:last-child {
+  margin-bottom: 0;
+}
+
+/* Callout box for the student's specific question answer */
+.focus-callout {
+  background-color: var(--accent-dim);
+  border: 1px solid rgba(31, 157, 85, 0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+
+.focus-callout-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.focus-callout-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.overview-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Section blocks (Requirements tab) ───────────────── */
+
+.section-block {
+  margin-bottom: 32px;
+}
+
+.section-block:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Key verb cards ──────────────────────────────────── */
+
+/* Grid of cards showing command words (e.g. Analyse, Evaluate) */
+.verb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.verb-card {
+  background-color: var(--bg-input);
+  border: 1px solid rgba(31, 157, 85, 0.2);
+  border-radius: 9px;
+  padding: 13px 14px;
+}
+
+.verb-word {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 5px;
+  letter-spacing: 0.2px;
+}
+
+.verb-meaning {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ── Requirements list ───────────────────────────────── */
+
+/* Bulleted list with coloured dots */
+.req-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.req-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.req-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.req-dot.green { background-color: var(--accent); }
+.req-dot.amber { background-color: var(--warning); }
+
+/* ── Step list (Action Plan tab) ─────────────────────── */
+
+.step-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: border-color 0.2s;
+}
+
+.step-card:hover {
+  border-color: var(--text-faint);
+}
+
+/* Green numbered circle */
+.step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  padding-top: 3px;
+}
+
+/* ── Structure list (Structure tab) ──────────────────── */
+
+.structure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.structure-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  transition: background-color 0.15s;
+}
+
+.structure-item:hover {
+  background-color: var(--bg-elevated);
+}
+
+.structure-index {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background-color: var(--bg-elevated);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.structure-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.structure-purpose {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ── Timeline (Timeline tab) ─────────────────────────── */
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+}
+
+/* The vertical line and dot marker on the left */
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  padding-top: 3px;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 2px solid var(--bg-base);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(31, 157, 85, 0.25);
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background-color: var(--border-default);
+  min-height: 20px;
+  margin-top: 4px;
+}
+
+.timeline-body {
+  padding-bottom: 24px;
+  flex: 1;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.timeline-phase {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Small green badge showing estimated days */
+.duration-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-dim);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.timeline-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Mistakes (Mistakes tab) ─────────────────────────── */
+
+.mistakes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Numbered mistake card */
+.mistake-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mistake-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mistake-number {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.mistake-body {
+  flex: 1;
+}
+
+.mistake-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0 0 4px;
+}
+
+.mistake-why {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Full Report tab ─────────────────────────────────── */
+
+/* Each named section in the full report */
+.report-section {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Uppercase label above each report section */
+.report-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 10px;
+}
+
+.report-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Assessment type shown as a styled badge in the full report */
+.report-type-badge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-dim);
+  border: 1px solid rgba(31, 157, 85, 0.25);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .results-header {
+    padding: 18px 20px;
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+
+  .tab-button {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .results-actions {
+    width: 100%;
+  }
+
+  .btn-export,
+  .btn-new-analysis {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+/* ── Rubric tab ──────────────────────────────────────── */
+
+.rubric-status {
+  margin-bottom: 24px;
+}
+
+.rubric-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.rubric-found {
+  background-color: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(31, 157, 85, 0.25);
+}
+
+.rubric-suggested {
+  background-color: rgba(245, 158, 11, 0.08);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.rubric-criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.rubric-criterion {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.rubric-criterion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.rubric-criterion-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.rubric-weight-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-dim);
+  border: 1px solid rgba(31, 157, 85, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rubric-criterion-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.rubric-score-tip {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}

@@ -1,0 +1,29 @@
+# Environment variables — never commit these
+.env
+.env.*
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+
+# Temp files
+*.pdf
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/

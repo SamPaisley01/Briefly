@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+pdfplumber
+pymupdf
+openai
+python-dotenv
+reportlab
