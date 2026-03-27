@@ -1,0 +1,7 @@
+[build]
+  base = "assignment-analyser-frontend"
+  command = "npm run build"
+  publish = "assignment-analyser-frontend/dist"
+
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_ADMIN_EMAIL,VITE_API_URL,VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY"
