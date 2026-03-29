@@ -8,11 +8,11 @@ Students often struggle to interpret assignment briefs, especially when they are
 
 Upload a brief and choose from several analysis modes:
 
-- **General** — a broad summary of the assignment, key tasks, and common mistakes to avoid
-- **Rubric** — breaks down the marking rubric and what each grade band requires
-- **Structure** — suggests how to structure your response or report
-- **Assessment Requirements** — pulls out the specific requirements, word counts, and deadlines
-- **Timeline** — suggests a work plan based on the submission date
+- **General** : a broad summary of the assignment, key tasks, and common mistakes to avoid
+- **Rubric** : breaks down the marking rubric and what each grade band requires
+- **Structure** : suggests how to structure your response or report
+- **Assessment Requirements** : pulls out the specific requirements, word counts, and deadlines
+- **Timeline** : suggests a work plan based on the submission date
 
 ---
 
