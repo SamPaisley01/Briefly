@@ -13,6 +13,7 @@ import Sidebar from "./Sidebar";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import VerificationPage from "./VerificationPage";
+import ResetPasswordForm from "./ResetPasswordForm";
 import "../App.css";
 
 // The admin email comes from the frontend .env file (VITE_ADMIN_EMAIL).
@@ -26,7 +27,7 @@ function isAdmin(email) {
 // ── Component ────────────────────────────────────────────────────────────────
 
 function MainApp() {
-  const { user }               = useContext(AuthContext);
+  const { user, isRecovery }   = useContext(AuthContext);
   const { theme, toggleTheme } = useTheme();
 
   // Analysis state
@@ -130,6 +131,9 @@ function MainApp() {
   // ── Section renderer ───────────────────────────────────────────────────────
 
   const renderContent = () => {
+    // If the user arrived via a password reset link, show the set-new-password form
+    if (isRecovery) return <ResetPasswordForm />;
+
     switch (activeSection) {
 
       // ── About ──────────────────────────────────────────────────────────────
