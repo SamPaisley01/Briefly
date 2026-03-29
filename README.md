@@ -18,13 +18,11 @@ Upload a brief and choose from several analysis modes:
 
 ## Screenshots
 
-<!-- Add screenshots here once the app is deployed and styled -->
 
 | Home Page | Analysis Results |
 |-----------|-----------------|
 | ![Home](screenshots/home.png) | ![Results](screenshots/results.png) |
 
-<!-- Add more screenshots as needed -->
 
 ---
 
@@ -40,16 +38,6 @@ Upload a brief and choose from several analysis modes:
 - OpenAI GPT-4o / GPT-4o-mini
 - PDF parsing with pdfplumber and PyMuPDF
 - Hosted on Render
-
----
-
-## Project Structure
-
-```
-briefly/
-├── assignment-analyser-frontend/   # React frontend
-└── assignment-analyser-backend/    # FastAPI backend
-```
 
 ---
 
