@@ -1,4 +1,4 @@
-# Briefly
+# Briefly | https://briefly.ie/
 
 Briefly is a web application built as part of a final year college project. It allows students to upload assignment briefs in PDF format and receive a structured AI-powered breakdown of what the brief is asking, what the assessor is looking for, and how to approach the work.
 
@@ -25,7 +25,9 @@ Upload a brief and choose from several analysis modes:
 
 **Demo**
 
-![Demo](analysed-vid.mp4)
+
+
+https://github.com/user-attachments/assets/23068642-2a19-4e10-a2f9-aa43f422a9b9
 
 
 ---
