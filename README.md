@@ -21,7 +21,11 @@ Upload a brief and choose from several analysis modes:
 
 | Home Page | Analysis Results |
 |-----------|-----------------|
-| ![Home](screenshots/home.png) | ![Results](screenshots/results.png) |
+| ![Home](home.png) | ![Results](analyse.png) |
+
+**Demo**
+
+![Demo](analysed-vid.mp4)
 
 
 ---
