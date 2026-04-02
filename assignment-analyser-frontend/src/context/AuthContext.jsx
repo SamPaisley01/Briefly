@@ -15,10 +15,8 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     // Check for ?reset=true in the URL — set by the password reset email link
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("reset") === "true") {
-      setIsRecovery(true);
-    }
+    const isResetFlow = new URLSearchParams(window.location.search).get("reset") === "true";
+    if (isResetFlow) setIsRecovery(true);
 
     supabase.auth.getSession().then(({ data }) => {
       setUser(data.session?.user ?? null);
@@ -29,6 +27,9 @@ export function AuthProvider({ children }) {
       (event, session) => {
         if (event === "PASSWORD_RECOVERY") {
           setIsRecovery(true);
+          setUser(session?.user ?? null);
+        } else if (event === "SIGNED_IN" && isResetFlow) {
+          // Don't clear isRecovery — we're still in the reset flow
           setUser(session?.user ?? null);
         } else {
           setIsRecovery(false);
