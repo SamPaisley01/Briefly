@@ -58,7 +58,7 @@ function LoginForm({ onLoginSuccess, onSwitchToRegister }) {
 
     const { error: resetErr } = await supabase.auth.resetPasswordForEmail(
       resetEmail,
-      { redirectTo: window.location.origin } // takes user back to the app after reset
+      { redirectTo: `${window.location.origin}?reset=true` }
     );
 
     setResetLoading(false);

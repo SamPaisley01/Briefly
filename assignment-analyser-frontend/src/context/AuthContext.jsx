@@ -14,9 +14,9 @@ export function AuthProvider({ children }) {
   const [isRecovery, setIsRecovery] = useState(false); // true when user clicked a password reset link
 
   useEffect(() => {
-    // Check the URL hash on load — if type=recovery, show the reset form immediately
-    const hash = window.location.hash;
-    if (hash.includes("type=recovery")) {
+    // Check for ?reset=true in the URL — set by the password reset email link
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("reset") === "true") {
       setIsRecovery(true);
     }
 
