@@ -14,6 +14,12 @@ export function AuthProvider({ children }) {
   const [isRecovery, setIsRecovery] = useState(false); // true when user clicked a password reset link
 
   useEffect(() => {
+    // Check the URL hash on load — if type=recovery, show the reset form immediately
+    const hash = window.location.hash;
+    if (hash.includes("type=recovery")) {
+      setIsRecovery(true);
+    }
+
     supabase.auth.getSession().then(({ data }) => {
       setUser(data.session?.user ?? null);
       setLoading(false);
@@ -22,7 +28,6 @@ export function AuthProvider({ children }) {
     const { data: listener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (event === "PASSWORD_RECOVERY") {
-          // Don't log the user in — show the set-new-password form instead
           setIsRecovery(true);
           setUser(session?.user ?? null);
         } else {
