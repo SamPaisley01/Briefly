@@ -19,7 +19,7 @@ Upload a brief and choose from several analysis modes:
 ## Screenshots
 
 
-| Home Page | Analysis Results |
+| Home Page | Analysis Page |
 |-----------|-----------------|
 | ![Home](home.png) | ![Results](analyse.png) |
 
