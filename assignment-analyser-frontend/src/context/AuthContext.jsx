@@ -11,12 +11,13 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user,       setUser]       = useState(null);
   const [loading,    setLoading]    = useState(true);
-  const [isRecovery, setIsRecovery] = useState(false); // true when user clicked a password reset link
+  // Initialise synchronously from the URL so the reset form shows on the very first render
+  const [isRecovery, setIsRecovery] = useState(
+    () => new URLSearchParams(window.location.search).get("reset") === "true"
+  );
 
   useEffect(() => {
-    // Check for ?reset=true in the URL — set by the password reset email link
     const isResetFlow = new URLSearchParams(window.location.search).get("reset") === "true";
-    if (isResetFlow) setIsRecovery(true);
 
     supabase.auth.getSession().then(({ data }) => {
       setUser(data.session?.user ?? null);
