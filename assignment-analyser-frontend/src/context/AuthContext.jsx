@@ -28,14 +28,11 @@ export function AuthProvider({ children }) {
       (event, session) => {
         if (event === "PASSWORD_RECOVERY") {
           setIsRecovery(true);
-          setUser(session?.user ?? null);
-        } else if (event === "SIGNED_IN" && isResetFlow) {
-          // Don't clear isRecovery — we're still in the reset flow
-          setUser(session?.user ?? null);
-        } else {
+        } else if (!isResetFlow) {
+          // Only clear recovery state if we're not in a reset flow
           setIsRecovery(false);
-          setUser(session?.user ?? null);
         }
+        setUser(session?.user ?? null);
       }
     );
 
